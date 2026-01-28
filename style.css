@@ -31,6 +31,10 @@ body {
 header {
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 1000;
 }
 
 nav {
@@ -119,6 +123,7 @@ nav {
   gap: 2rem;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 .about-img {
@@ -196,7 +201,7 @@ nav {
 
 .card-overlay {
   position: absolute;
-  bottom: -100%; /* start hidden */
+  bottom: -100%;
   left: 0;
   width: 100%;
   height: 100%;
@@ -236,15 +241,6 @@ nav {
   margin-bottom: 0.5rem;
 }
 
-/* Responsive for mobile */
-@media (max-width: 600px) {
-  .project-card {
-    height: 180px;
-  }
-}
-
-}
-
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
@@ -282,10 +278,12 @@ footer a:hover {
     margin-bottom: 1.5rem;
   }
 
-  .project-card iframe {
+  .project-card {
     height: 180px;
   }
 }
+
+
 
 
 
