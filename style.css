@@ -1,7 +1,6 @@
 :root {
   --text: #1a1a1a;
   --muted: #555;
-  --bg: #ffffff;
   --accent: #1e90ff;
   --card-bg: #f9f9f9;
   --border: #e0e0e0;
@@ -16,7 +15,7 @@
 body {
   font-family: 'Roboto', 'Segoe UI', sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background: linear-gradient(to bottom, #fdfdfd, #f5f5f5); /* subtle gradient */
   line-height: 1.7;
 }
 
@@ -33,7 +32,7 @@ header {
   padding: 1rem 0;
   position: sticky;
   top: 0;
-  background: var(--bg);
+  background: #fff;
   z-index: 1000;
 }
 
@@ -65,6 +64,33 @@ nav {
   color: var(--accent);
 }
 
+/* SECTIONS */
+.section {
+  padding: 5rem 2rem;
+  position: relative;
+  border-top: 1px solid var(--border);
+}
+
+.section:nth-of-type(even) {
+  background: #fafafa;
+}
+
+.section h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section h3::before {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 60px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
 /* HERO */
 .hero {
   padding: 6rem 2rem 4rem;
@@ -83,6 +109,7 @@ nav {
   margin: 0 auto 2rem;
 }
 
+/* CTA BUTTON */
 .cta-btn {
   display: inline-block;
   padding: 0.8rem 1.8rem;
@@ -140,25 +167,6 @@ nav {
   list-style: disc inside;
   margin-top: 1rem;
   color: var(--muted);
-}
-
-/* SECTIONS */
-.section {
-  padding: 4rem 0;
-}
-
-.section h3 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid var(--border);
-  display: inline-block;
-  padding-bottom: 0.25rem;
-}
-
-.section p {
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  font-size: 1.05rem;
 }
 
 /* PROJECTS GRID */
@@ -241,6 +249,30 @@ nav {
   margin-bottom: 0.5rem;
 }
 
+/* SKILLS GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
@@ -282,8 +314,6 @@ footer a:hover {
     height: 180px;
   }
 }
-
-
 
 
 
