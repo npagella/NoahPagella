@@ -3,7 +3,7 @@
   --text: #1a1a1a;
   --muted: #555;
   --bg: #ffffff;
-  --accent: #1e90ff; /* subtle professional blue */
+  --accent: #1e90ff; /* professional blue */
   --card-bg: #f9f9f9;
   --border: #e0e0e0;
 }
@@ -27,6 +27,7 @@ body {
   padding: 2rem;
 }
 
+/* NAVIGATION */
 header {
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
@@ -60,6 +61,7 @@ nav {
   color: var(--accent);
 }
 
+/* HERO / HOME */
 .hero {
   padding: 6rem 2rem 4rem;
   text-align: center;
@@ -77,6 +79,7 @@ nav {
   margin: 0 auto 2rem;
 }
 
+/* SOCIAL LINKS */
 .social-links {
   display: flex;
   justify-content: center;
@@ -85,15 +88,15 @@ nav {
 
 .social-links a {
   color: var(--accent);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   transition: color 0.2s;
 }
 
 .social-links a:hover {
-  color: #104e8b; /* darker accent on hover */
+  color: #104e8b;
 }
 
-/* Sections */
+/* SECTIONS */
 .section {
   padding: 4rem 0;
 }
@@ -112,7 +115,7 @@ nav {
   font-size: 1.05rem;
 }
 
-/* Projects Grid */
+/* PROJECTS GRID */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -156,7 +159,7 @@ nav {
   color: #104e8b;
 }
 
-/* Footer */
+/* FOOTER */
 footer {
   border-top: 1px solid var(--border);
   text-align: center;
@@ -165,7 +168,7 @@ footer {
   font-size: 0.95rem;
 }
 
-/* Responsive tweaks */
+/* RESPONSIVE */
 @media (max-width: 600px) {
   .hero h2 {
     font-size: 2rem;
@@ -174,4 +177,10 @@ footer {
   .nav-links {
     gap: 1rem;
   }
+
+  .project-card iframe {
+    height: 180px; /* smaller on mobile */
+  }
 }
+
+
