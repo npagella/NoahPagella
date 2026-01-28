@@ -1,9 +1,8 @@
-/* Root colors */
 :root {
   --text: #1a1a1a;
   --muted: #555;
   --bg: #ffffff;
-  --accent: #1e90ff; /* professional blue */
+  --accent: #1e90ff;
   --card-bg: #f9f9f9;
   --border: #e0e0e0;
 }
@@ -21,13 +20,14 @@ body {
   line-height: 1.7;
 }
 
+/* Container */
 .container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* NAVIGATION */
+/* NAV */
 header {
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
@@ -61,7 +61,7 @@ nav {
   color: var(--accent);
 }
 
-/* HERO / HOME */
+/* HERO */
 .hero {
   padding: 6rem 2rem 4rem;
   text-align: center;
@@ -79,11 +79,28 @@ nav {
   margin: 0 auto 2rem;
 }
 
+.cta-btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: background 0.2s;
+}
+
+.cta-btn:hover {
+  background: #104e8b;
+}
+
 /* SOCIAL LINKS */
 .social-links {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .social-links a {
@@ -94,6 +111,30 @@ nav {
 
 .social-links a:hover {
   color: #104e8b;
+}
+
+/* ABOUT */
+.about-flex {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.about-img {
+  width: 250px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.about-text {
+  flex: 1;
+}
+
+.highlights {
+  list-style: disc inside;
+  margin-top: 1rem;
+  color: var(--muted);
 }
 
 /* SECTIONS */
@@ -133,7 +174,7 @@ nav {
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 .project-card h4 {
@@ -146,6 +187,16 @@ nav {
   margin-bottom: 1rem;
   color: var(--muted);
   font-size: 1rem;
+}
+
+.project-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #fff;
+  background: var(--accent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
 }
 
 .project-card a {
@@ -168,6 +219,15 @@ footer {
   font-size: 0.95rem;
 }
 
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #104e8b;
+}
+
 /* RESPONSIVE */
 @media (max-width: 600px) {
   .hero h2 {
@@ -178,9 +238,19 @@ footer {
     gap: 1rem;
   }
 
+  .about-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-img {
+    margin-bottom: 1.5rem;
+  }
+
   .project-card iframe {
-    height: 180px; /* smaller on mobile */
+    height: 180px;
   }
 }
+
 
 
