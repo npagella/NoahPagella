@@ -192,6 +192,49 @@ nav {
 }
 
 .project-card.article:hover .card-overlay { opacity:1; }
+<section id="projects" class="container section">
+  <h3>Selected Work</h3>
+
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="article">Articles</button>
+    <button class="filter-btn" data-filter="video">Video</button>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Medium Article -->
+    <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card article">
+      <div class="card-thumb" style="background-image:url('Pagella_PantryLine.jpg')"></div>
+      <div class="card-overlay">
+        <span class="project-tag">Article</span>
+        <h4>SNAP Cuts Lead To Increased Need</h4>
+        <p>Exploring how federal SNAP benefit cuts are straining food banks in New Jersey.</p>
+      </div>
+    </a>
+
+    <!-- MOCSI Article -->
+    <a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" class="project-card article">
+      <div class="card-thumb" style="background-image:url('mocsi-article-thumb.jpg')"></div>
+      <div class="card-overlay">
+        <span class="project-tag">Article</span>
+        <h4>President Dr. Rose Presents to MOCSI</h4>
+        <p>A multimedia story covering MOCSI events and community impact.</p>
+      </div>
+    </a>
+
+    <!-- YouTube Video 1 -->
+    <div class="project-card video">
+      <iframe src="https://www.youtube.com/embed/FhisHxERv-g" allowfullscreen></iframe>
+    </div>
+
+    <!-- YouTube Video 2 -->
+    <div class="project-card video">
+      <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" allowfullscreen></iframe>
+    </div>
+
+  </div>
+</section>
 
 .card-overlay h4 { color:#fff; font-size:1.2rem; }
 .card-overlay p { color:#ddd; font-size:.9rem; }
@@ -387,6 +430,7 @@ window.addEventListener("load",()=>{
 
 </body>
 </html>
+
 
 
 
