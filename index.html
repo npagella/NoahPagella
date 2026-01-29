@@ -161,92 +161,75 @@ nav {
 
 /* PROJECT CARD */
 .project-card {
-  position:relative;
-  border-radius:12px;
-  overflow:hidden;
-  background:#fff;
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity .6s ease, transform .6s ease;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Fade-in visible */
 .project-card.visible {
-  opacity:1;
-  transform:translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.project-card.article { height:220px; }
-.project-card.video iframe { width:100%; height:100%; border:none; }
+/* Card thumbnail for articles */
+.project-card.article .card-thumb {
+  height: 180px;           
+  background-size: cover;
+  background-position: center;
+}
 
-/* OVERLAY */
+/* Card overlay */
 .card-overlay {
-  position:absolute;
-  inset:0;
-  padding:1rem;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  background:linear-gradient(to top,rgba(0,0,0,.75),transparent);
-  opacity:0;
-  transition:.3s;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity .3s;
 }
 
-.project-card.article:hover .card-overlay { opacity:1; }
-<section id="projects" class="container section">
-  <h3>Selected Work</h3>
+.project-card.article:hover .card-overlay {
+  opacity: 1;
+}
 
-  <div class="filter-buttons">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="article">Articles</button>
-    <button class="filter-btn" data-filter="video">Video</button>
-  </div>
+.card-overlay h4 { margin-bottom: .5rem; }
+.card-overlay p { font-size: .9rem; }
 
-  <div class="projects-grid">
-
-    <!-- Medium Article -->
-    <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card article">
-      <div class="card-thumb" style="background-image:url('Pagella_PantryLine.jpg')"></div>
-      <div class="card-overlay">
-        <span class="project-tag">Article</span>
-        <h4>SNAP Cuts Lead To Increased Need</h4>
-        <p>Exploring how federal SNAP benefit cuts are straining food banks in New Jersey.</p>
-      </div>
-    </a>
-
-    <!-- MOCSI Article -->
-    <a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" class="project-card article">
-      <div class="card-thumb" style="background-image:url('mocsi-article-thumb.jpg')"></div>
-      <div class="card-overlay">
-        <span class="project-tag">Article</span>
-        <h4>President Dr. Rose Presents to MOCSI</h4>
-        <p>A multimedia story covering MOCSI events and community impact.</p>
-      </div>
-    </a>
-
-    <!-- YouTube Video 1 -->
-    <div class="project-card video">
-      <iframe src="https://www.youtube.com/embed/FhisHxERv-g" allowfullscreen></iframe>
-    </div>
-
-    <!-- YouTube Video 2 -->
-    <div class="project-card video">
-      <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" allowfullscreen></iframe>
-    </div>
-
-  </div>
-</section>
-
-.card-overlay h4 { color:#fff; font-size:1.2rem; }
-.card-overlay p { color:#ddd; font-size:.9rem; }
-
+/* Tag */
 .project-tag {
-  background:var(--accent);
-  color:#fff;
-  font-size:.75rem;
-  padding:.2rem .5rem;
-  border-radius:4px;
-  width:fit-content;
-  margin-bottom:.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: .75rem;
+  padding: .2rem .5rem;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: .5rem;
+}
+
+/* Video card */
+.project-card.video {
+  height: 220px;          
+}
+
+.project-card.video iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
 }
 
 /* SKILLS */
@@ -363,11 +346,12 @@ footer {
   </div>
 </a>
 
-<!-- YouTube Videos -->
+<!-- YouTube Video 1 -->
 <div class="project-card video">
   <iframe src="https://www.youtube.com/embed/FhisHxERv-g" allowfullscreen></iframe>
 </div>
 
+<!-- YouTube Video 2 -->
 <div class="project-card video">
   <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" allowfullscreen></iframe>
 </div>
@@ -430,7 +414,6 @@ window.addEventListener("load",()=>{
 
 </body>
 </html>
-
 
 
 
