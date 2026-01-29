@@ -26,6 +26,7 @@ body {
   line-height:1.7;
 }
 
+/* CONTAINERS */
 .container {
   max-width:1000px;
   margin:auto;
@@ -73,12 +74,7 @@ nav {
 }
 
 .hero h2 { font-size:2.5rem; margin-bottom:1rem; }
-
-.hero p {
-  max-width:650px;
-  margin:0 auto 2rem;
-  color:var(--muted);
-}
+.hero p { max-width:650px; margin:0 auto 2rem; color:var(--muted); }
 
 .social-links {
   display:flex;
@@ -134,7 +130,7 @@ nav {
   color:var(--muted);
 }
 
-/* FILTER */
+/* FILTER BUTTONS */
 .filter-buttons {
   display:flex;
   gap:1rem;
@@ -163,41 +159,26 @@ nav {
   gap:1.5rem;
 }
 
-/* CARD */
+/* PROJECT CARD */
 .project-card {
   position:relative;
-  height:220px;
   border-radius:12px;
   overflow:hidden;
   background:#fff;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease, transform .6s ease;
 }
 
-#blog .project-card { height:160px; }
-
-.project-card.hidden { display:none; }
-
-.card-thumb,
-iframe {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border:none;
+.project-card.visible {
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* PLAY ICON */
-.project-card.video::after {
-  content:"▶";
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:3rem;
-  color:rgba(255,255,255,.85);
-  pointer-events:none;
-}
+.project-card.article { height:220px; }
+.project-card.video iframe { width:100%; height:100%; border:none; }
 
-/* OVERLAY (ARTICLES ONLY) */
+/* OVERLAY */
 .card-overlay {
   position:absolute;
   inset:0;
@@ -208,7 +189,6 @@ iframe {
   background:linear-gradient(to top,rgba(0,0,0,.75),transparent);
   opacity:0;
   transition:.3s;
-  pointer-events:none;
 }
 
 .project-card.article:hover .card-overlay { opacity:1; }
@@ -265,8 +245,8 @@ footer {
   .about-flex{flex-direction:column;text-align:center;}
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <header>
@@ -276,6 +256,7 @@ footer {
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -283,7 +264,7 @@ footer {
 
 <section id="home" class="hero container">
   <h2>Multimedia Journalist, Writer & Videographer</h2>
-  <p>Stories through words, video, and digital media.</p>
+  <p>I tell stories through words, video, and digital media.</p>
   <div class="social-links">
     <a href="https://www.linkedin.com/in/noahpagella/" target="_blank">LinkedIn</a>
     <a href="https://www.instagram.com/npagella4/" target="_blank">Instagram</a>
@@ -296,11 +277,13 @@ footer {
   <div class="about-flex">
     <img src="Headshot.jpg" class="about-img">
     <div>
-      <p>I’m a multimedia journalist focused on people, communities, and impact.</p>
+      <p>I’m a multimedia journalist with experience in long-form writing, video production, and digital storytelling. My work explores social issues, human stories, and visual narratives across platforms.</p>
+      <p>I’ve worked on written features, short documentaries, and social-first video projects, always with an emphasis on clarity, ethics, and impact.</p>
       <ul class="highlights">
         <li>Investigative Reporting</li>
-        <li>Video Production</li>
+        <li>Video Editing & Production</li>
         <li>Multimedia Storytelling</li>
+        <li>Photography & Visual Media</li>
       </ul>
     </div>
   </div>
@@ -317,22 +300,27 @@ footer {
 
 <div class="projects-grid">
 
+<!-- Medium Article -->
 <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card article">
-  <div class="card-thumb" style="background-image:url('Pagella_PantryLine.jpg')"></div>
+  <div class="card-thumb" style="background-image:url('Pagella_PantryLine2.jpg')"></div>
   <div class="card-overlay">
     <span class="project-tag">Article</span>
     <h4>SNAP Cuts Lead To Increased Need</h4>
+    <p>Exploring how federal SNAP benefit cuts are straining food banks in New Jersey.</p>
   </div>
 </a>
 
+<!-- MOCSI Article -->
 <a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" class="project-card article">
   <div class="card-thumb" style="background-image:url('mocsi-article-thumb.jpg')"></div>
   <div class="card-overlay">
     <span class="project-tag">Article</span>
     <h4>President Dr. Rose Presents to MOCSI</h4>
+    <p>A multimedia story covering MOCSI events and community impact.</p>
   </div>
 </a>
 
+<!-- YouTube Videos -->
 <div class="project-card video">
   <iframe src="https://www.youtube.com/embed/FhisHxERv-g" allowfullscreen></iframe>
 </div>
@@ -344,8 +332,21 @@ footer {
 </div>
 </section>
 
+<section id="skills" class="container section">
+<h3>Skills & Expertise</h3>
+<div class="skills-grid">
+  <div class="skill-card">Video Editing</div>
+  <div class="skill-card">Long-Form Writing</div>
+  <div class="skill-card">Digital Storytelling</div>
+  <div class="skill-card">Photography</div>
+  <div class="skill-card">Videography</div>
+  <div class="skill-card">Investigative Research</div>
+</div>
+</section>
+
 <section id="contact" class="container section">
-  <h3>Contact</h3>
+  <h3>Contact Me</h3>
+  <p>If you want to collaborate, commission work, or discuss ideas, feel free to reach out.</p>
   <a href="mailto:npagella4@gmail.com" class="cta-btn">Email Me</a>
 </section>
 
@@ -354,21 +355,33 @@ footer {
 </footer>
 
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
+// Footer year
+document.getElementById("year").textContent = new Date().getFullYear();
 
-const buttons=document.querySelectorAll(".filter-btn");
-const cards=document.querySelectorAll(".project-card");
+// FILTER PROJECTS
+const filterButtons=document.querySelectorAll(".filter-btn");
+const projects=document.querySelectorAll(".project-card");
 
-buttons.forEach(btn=>{
-  btn.onclick=()=>{
-    buttons.forEach(b=>b.classList.remove("active"));
+filterButtons.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    filterButtons.forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
     const f=btn.dataset.filter;
-    cards.forEach(c=>{
-      c.classList.remove("hidden");
-      if(f!=="all"&&!c.classList.contains(f)) c.classList.add("hidden");
+    projects.forEach(p=>{
+      p.classList.remove("hidden");
+      if(f!=="all"&&!p.classList.contains(f)) p.classList.add("hidden");
+      // Trigger fade-in
+      if(!p.classList.contains("hidden")) setTimeout(()=>p.classList.add("visible"),100);
+      else p.classList.remove("visible");
     });
-  }
+  });
+});
+
+// INITIAL FADE-IN
+window.addEventListener("load",()=>{
+  projects.forEach((p,i)=>{
+    setTimeout(()=>p.classList.add("visible"),i*150);
+  });
 });
 </script>
 
