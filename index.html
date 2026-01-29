@@ -1,202 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Noah Pagella — Multimedia Journalist</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noah Pagella — Multimedia Journalist</title>
+
+<style>
+:root {
+  --text:#1a1a1a;
+  --muted:#555;
+  --accent:#1e90ff;
+  --bg-main:#f0f2f5;
+  --bg-alt:#f8f9fb;
+  --border:#e0e0e0;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: Roboto, Segoe UI, sans-serif;
+  background: linear-gradient(to bottom,var(--bg-main),#e6e9ef);
+  color:var(--text);
+  line-height:1.7;
+}
+
+.container {
+  max-width:1000px;
+  margin:auto;
+  padding:2rem;
+}
+
+/* NAV */
+header {
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--border);
+  z-index:1000;
+}
+
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo { font-size:1.5rem; font-weight:700; }
+
+.nav-links {
+  list-style:none;
+  display:flex;
+  gap:2rem;
+}
+
+.nav-links a {
+  text-decoration:none;
+  color:var(--text);
+  font-weight:500;
+}
+
+.nav-links a:hover { color:var(--accent); }
+
+/* HERO */
+.hero {
+  text-align:center;
+  padding:6rem 2rem 4rem;
+  background:linear-gradient(135deg,#eef2f7,#dbe5f1);
+  border-radius:12px;
+  margin-top:2rem;
+}
+
+.hero h2 { font-size:2.5rem; margin-bottom:1rem; }
+
+.hero p {
+  max-width:650px;
+  margin:0 auto 2rem;
+  color:var(--muted);
+}
+
+.social-links {
+  display:flex;
+  justify-content:center;
+  gap:1.5rem;
+}
+
+.social-links a {
+  font-weight:600;
+  color:var(--accent);
+  text-decoration:none;
+}
+
+/* SECTIONS */
+.section {
+  padding:5rem 2rem;
+  border-top:1px solid var(--border);
+}
+
+.section:nth-child(even) { background:var(--bg-alt); }
+
+.section h3 {
+  font-size:2rem;
+  margin-bottom:2rem;
+}
+
+.section h3::before {
+  content:"";
+  display:block;
+  width:60px;
+  height:3px;
+  background:var(--accent);
+  margin-bottom:1rem;
+}
+
+/* ABOUT */
+.about-flex {
+  display:flex;
+  gap:2rem;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.about-img {
+  width:250px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
+.highlights {
+  list-style:disc inside;
+  margin-top:1rem;
+  color:var(--muted);
+}
+
+/* FILTER */
+.filter-buttons {
+  display:flex;
+  gap:1rem;
+  margin-bottom:2rem;
+}
+
+.filter-btn {
+  padding:.5rem 1.2rem;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background:var(--accent);
+  color:#fff;
+}
+
+/* PROJECT GRID */
+.projects-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+}
+
+/* CARD */
+.project-card {
+  position:relative;
+  height:220px;
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+}
+
+#blog .project-card { height:160px; }
+
+.project-card.hidden { display:none; }
+
+.card-thumb,
+iframe {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border:none;
+}
+
+/* PLAY ICON */
+.project-card.video::after {
+  content:"▶";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:3rem;
+  color:rgba(255,255,255,.85);
+  pointer-events:none;
+}
+
+/* OVERLAY (ARTICLES ONLY) */
+.card-overlay {
+  position:absolute;
+  inset:0;
+  padding:1rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  background:linear-gradient(to top,rgba(0,0,0,.75),transparent);
+  opacity:0;
+  transition:.3s;
+  pointer-events:none;
+}
+
+.project-card.article:hover .card-overlay { opacity:1; }
+
+.card-overlay h4 { color:#fff; font-size:1.2rem; }
+.card-overlay p { color:#ddd; font-size:.9rem; }
+
+.project-tag {
+  background:var(--accent);
+  color:#fff;
+  font-size:.75rem;
+  padding:.2rem .5rem;
+  border-radius:4px;
+  width:fit-content;
+  margin-bottom:.5rem;
+}
+
+/* SKILLS */
+.skills-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:1rem;
+}
+
+.skill-card {
+  background:#fff;
+  padding:1rem;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* CTA */
+.cta-btn {
+  display:inline-block;
+  margin-top:1.5rem;
+  padding:.8rem 1.8rem;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  border-radius:6px;
+}
+
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:2rem;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+@media(max-width:600px){
+  .hero h2{font-size:2rem;}
+  .about-flex{flex-direction:column;text-align:center;}
+}
+</style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <header>
-    <nav class="container">
-      <h1 class="logo">Noah Pagella</h1>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav class="container">
+    <h1 class="logo">Noah Pagella</h1>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- HOME -->
-  <section id="home" class="hero container fade-in">
-    <h2>Multimedia Journalist, Writer & Videographer</h2>
-    <p>
-      I tell stories through words, video, and digital media — focused on
-      culture, people, and real-world impact.
-    </p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/noahpagella/" target="_blank">LinkedIn</a>
-      <a href="https://www.instagram.com/npagella4/?hl=en" target="_blank">Instagram</a>
-      <a href="https://www.youtube.com/@Sifcs" target="_blank">YouTube</a>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="container section fade-in">
-    <h3>About Me</h3>
-    <div class="about-flex">
-      <img src="Headshot.jpg" alt="Noah Pagella" class="about-img">
-      <div class="about-text">
-        <p>
-          I’m a multimedia journalist with experience in long-form writing,
-          video production, and digital storytelling. My work explores
-          social issues, human stories, and visual narratives across platforms.
-        </p>
-        <p>
-          I’ve worked on written features, short documentaries, and social-first
-          video projects, always with an emphasis on clarity, ethics, and impact.
-        </p>
-        <ul class="highlights">
-          <li>Investigative Reporting</li>
-          <li>Video Editing & Production</li>
-          <li>Multimedia Storytelling</li>
-          <li>Photography & Visual Media</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="container section fade-in">
-    <h3>Selected Work</h3>
-    <div class="projects-grid">
-
-      <!-- Medium Article -->
-      <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card fade-in">
-        <div class="card-thumb" style="background-image: url('Pagella_PantryLine2.jpg');"></div>
-        <div class="card-overlay">
-          <h4>SNAP Cuts Lead To Increased Need</h4>
-          <span class="project-tag">Article | Multimedia</span>
-          <p>Exploring how federal SNAP benefit cuts are straining food banks in New Jersey.</p>
-        </div>
-      </a>
-
-      <!-- YouTube Video 1 -->
-      <div class="project-card fade-in">
-        <iframe class="card-thumb" 
-                src="https://www.youtube.com/embed/FhisHxERv-g" 
-                title="Effects of Mis- and Disinformation" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
-        <div class="card-overlay">
-          <h4>Effects of Mis- and Disinformation</h4>
-          <span class="project-tag">Video | Investigation</span>
-          <p>Short video examining the impact of mis- and disinformation in society.</p>
-        </div>
-      </div>
-
-      <!-- YouTube Video 2 -->
-      <div class="project-card fade-in">
-        <iframe class="card-thumb" 
-                src="https://www.youtube.com/embed/cvKrCBMaX8E" 
-                title="Milford FC" 
-                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
-        <div class="card-overlay">
-          <h4>Milford FC</h4>
-          <span class="project-tag">Video | Documentary | Community</span>
-          <p>A documentary about a local soccer club and its role in the community.</p>
-        </div>
-      </div>
-
-<!-- Visions Newspaper Article -->
-<a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella"
-   target="_blank"
-   class="project-card fade-in">
-
-  <div class="card-thumb"
-       style="background-image: url('MOCSI-Article-Thumb.jpg');">
+<section id="home" class="hero container">
+  <h2>Multimedia Journalist, Writer & Videographer</h2>
+  <p>Stories through words, video, and digital media.</p>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/noahpagella/" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/npagella4/" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@Sifcs" target="_blank">YouTube</a>
   </div>
+</section>
 
+<section id="about" class="container section">
+  <h3>About Me</h3>
+  <div class="about-flex">
+    <img src="Headshot.jpg" class="about-img">
+    <div>
+      <p>I’m a multimedia journalist focused on people, communities, and impact.</p>
+      <ul class="highlights">
+        <li>Investigative Reporting</li>
+        <li>Video Production</li>
+        <li>Multimedia Storytelling</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="container section">
+<h3>Selected Work</h3>
+
+<div class="filter-buttons">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="article">Articles</button>
+  <button class="filter-btn" data-filter="video">Video</button>
+</div>
+
+<div class="projects-grid">
+
+<a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card article">
+  <div class="card-thumb" style="background-image:url('Pagella_PantryLine.jpg')"></div>
   <div class="card-overlay">
-    <h4>President Dr. Rose Presents to MOCSI</h4>
-    <span class="project-tag">Article | Campus Reporting</span>
-    <p>
-      Coverage of President Dr. Steven Rose’s presentation to the Men Of Color
-      Success Initiative, highlighting leadership, mentorship, and community.
-    </p>
+    <span class="project-tag">Article</span>
+    <h4>SNAP Cuts Lead To Increased Need</h4>
   </div>
 </a>
-      
-    </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="container section fade-in">
-    <h3>Skills & Expertise</h3>
-    <div class="skills-grid">
-      <div class="skill-card fade-in">Video Editing</div>
-      <div class="skill-card fade-in">Long-Form Writing</div>
-      <div class="skill-card fade-in">Digital Storytelling</div>
-      <div class="skill-card fade-in">Photography</div>
-      <div class="skill-card fade-in">Videography</div>
-      <div class="skill-card fade-in">Investigative Research</div>
-    </div>
-  </section>
+<a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" class="project-card article">
+  <div class="card-thumb" style="background-image:url('mocsi-article-thumb.jpg')"></div>
+  <div class="card-overlay">
+    <span class="project-tag">Article</span>
+    <h4>President Dr. Rose Presents to MOCSI</h4>
+  </div>
+</a>
 
-  <!-- BLOG / ARTICLES -->
-  <section id="blog" class="container section fade-in">
-    <h3>Latest Articles</h3>
-    <div class="projects-grid">
-      <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card fade-in">
-        <div class="card-thumb" style="background-image: url('Pagella_PantryLine.jpg');"></div>
-        <div class="card-overlay">
-          <h4>Exploring Local SNAP Cuts</h4>
-          <span class="project-tag">Article</span>
-          <p>A recent feature on federal benefit cuts and food insecurity in NJ.</p>
-        </div>
-      </a>
-    </div>
-  </section>
+<div class="project-card video">
+  <iframe src="https://www.youtube.com/embed/FhisHxERv-g" allowfullscreen></iframe>
+</div>
 
-  <!-- CONTACT -->
-  <section id="contact" class="container section fade-in">
-    <h3>Contact Me</h3>
-    <p>If you want to collaborate, commission work, or discuss ideas, feel free to reach out.</p>
-    <a href="mailto:npagella4@gmail.com" class="cta-btn">Email Me</a>
-  </section>
+<div class="project-card video">
+  <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" allowfullscreen></iframe>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© <span id="year"></span> Noah Pagella</p>
-  </footer>
+</div>
+</section>
 
-  <!-- SCRIPT FOR SCROLL ANIMATIONS & YEAR -->
-  <script>
-    // Fade-in on scroll
-    const faders = document.querySelectorAll('.fade-in');
+<section id="contact" class="container section">
+  <h3>Contact</h3>
+  <a href="mailto:npagella4@gmail.com" class="cta-btn">Email Me</a>
+</section>
 
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
+<footer>
+  © <span id="year"></span> Noah Pagella
+</footer>
 
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
 
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
+const buttons=document.querySelectorAll(".filter-btn");
+const cards=document.querySelectorAll(".project-card");
+
+buttons.forEach(btn=>{
+  btn.onclick=()=>{
+    buttons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const f=btn.dataset.filter;
+    cards.forEach(c=>{
+      c.classList.remove("hidden");
+      if(f!=="all"&&!c.classList.contains(f)) c.classList.add("hidden");
     });
-
-    // Auto-update footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  }
+});
+</script>
 
 </body>
 </html>
+
 
 
 
