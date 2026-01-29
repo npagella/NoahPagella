@@ -124,6 +124,8 @@ nav {
   border:1px solid var(--border);
 }
 
+.about-text { flex:1; }
+
 .highlights {
   list-style:disc inside;
   margin-top:1rem;
@@ -266,12 +268,12 @@ footer {
   color:var(--muted);
 }
 
-@media(max-width:600px){
-  .hero h2{font-size:2rem;}
+@media(max-width:800px){
   .about-flex{flex-direction:column;text-align:center;}
+  .about-img{margin-bottom:1rem;}
 }
-</style>
 
+</style>
 </head>
 <body>
 
@@ -302,7 +304,7 @@ footer {
   <h3>About Me</h3>
   <div class="about-flex">
     <img src="Headshot.jpg" class="about-img">
-    <div>
+    <div class="about-text">
       <p>I’m a multimedia journalist with experience in long-form writing, video production, and digital storytelling. My work explores social issues, human stories, and visual narratives across platforms.</p>
       <p>I’ve worked on written features, short documentaries, and social-first video projects, always with an emphasis on clarity, ethics, and impact.</p>
       <ul class="highlights">
@@ -318,17 +320,11 @@ footer {
 <section id="projects" class="container section">
 <h3>Selected Work</h3>
 
-<div class="filter-buttons">
-  <button class="filter-btn active" data-filter="all">All</button>
-  <button class="filter-btn" data-filter="article">Articles</button>
-  <button class="filter-btn" data-filter="video">Video</button>
-</div>
-
 <div class="projects-grid">
 
 <!-- Medium Article -->
 <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card article">
-  <div class="card-thumb" style="background-image:url('Pagella_PantryLine2.jpg')"></div>
+  <div class="card-thumb" style="background-image:url('Pagella_PantryLine.jpg')"></div>
   <div class="card-overlay">
     <span class="project-tag">Article</span>
     <h4>SNAP Cuts Lead To Increased Need</h4>
@@ -338,7 +334,7 @@ footer {
 
 <!-- MOCSI Article -->
 <a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" class="project-card article">
-  <div class="card-thumb" style="background-image:url('MOCSI-Article-Thumb.jpg')"></div>
+  <div class="card-thumb" style="background-image:url('mocsi-article-thumb.jpg')"></div>
   <div class="card-overlay">
     <span class="project-tag">Article</span>
     <h4>President Dr. Rose Presents to MOCSI</h4>
@@ -385,26 +381,8 @@ footer {
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// FILTER PROJECTS
-const filterButtons=document.querySelectorAll(".filter-btn");
+// INITIAL FADE-IN for projects
 const projects=document.querySelectorAll(".project-card");
-
-filterButtons.forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    filterButtons.forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const f=btn.dataset.filter;
-    projects.forEach(p=>{
-      p.classList.remove("hidden");
-      if(f!=="all"&&!p.classList.contains(f)) p.classList.add("hidden");
-      // Trigger fade-in
-      if(!p.classList.contains("hidden")) setTimeout(()=>p.classList.add("visible"),100);
-      else p.classList.remove("visible");
-    });
-  });
-});
-
-// INITIAL FADE-IN
 window.addEventListener("load",()=>{
   projects.forEach((p,i)=>{
     setTimeout(()=>p.classList.add("visible"),i*150);
@@ -414,6 +392,7 @@ window.addEventListener("load",()=>{
 
 </body>
 </html>
+
 
 
 
