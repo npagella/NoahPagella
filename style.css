@@ -323,6 +323,17 @@ footer a:hover {
     height: 180px;
   }
 }
+/* Allow video clicks */
+.project-card iframe {
+  pointer-events: auto;
+  border: none;
+}
+
+/* Overlay should not block clicks */
+.project-card .card-overlay {
+  pointer-events: none;
+}
+
 
 
 
