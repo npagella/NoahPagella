@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Pagella — Multimedia Journalist</title>
+<title>Noah Pagella — Multimedia Journalist & Storyteller</title>
+<meta name="description" content="Portfolio of Noah Pagella, a multimedia journalist specializing in investigative reporting, video production, and digital storytelling.">
 
 <style>
 :root {
@@ -13,6 +14,18 @@
   --bg-main:#f0f2f5;
   --bg-alt:#f8f9fb;
   --border:#e0e0e0;
+  --card:#ffffff;
+}
+
+/* DARK MODE VARIABLES */
+body.dark {
+  --text:#f1f1f1;
+  --muted:#bbb;
+  --accent:#4dabff;
+  --bg-main:#121212;
+  --bg-alt:#1a1a1a;
+  --border:#2a2a2a;
+  --card:#1e1e1e;
 }
 
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -21,9 +34,10 @@ html { scroll-behavior:smooth; }
 
 body {
   font-family: Roboto, Segoe UI, sans-serif;
-  background: linear-gradient(to bottom,var(--bg-main),#e6e9ef);
+  background: linear-gradient(to bottom,var(--bg-main),var(--bg-alt));
   color:var(--text);
   line-height:1.7;
+  transition: background .3s, color .3s;
 }
 
 /* CONTAINERS */
@@ -40,6 +54,11 @@ header {
   background:rgba(255,255,255,.95);
   border-bottom:1px solid var(--border);
   z-index:1000;
+  transition: background .3s;
+}
+
+body.dark header {
+  background:rgba(18,18,18,.95);
 }
 
 nav {
@@ -62,7 +81,31 @@ nav {
   font-weight:500;
 }
 
-.nav-links a:hover { color:var(--accent); }
+.nav-links a:hover,
+.nav-links a:focus-visible { color:var(--accent); }
+
+/* Hamburger */
+.hamburger {
+  display:none;
+  flex-direction:column;
+  gap:4px;
+  cursor:pointer;
+}
+
+.hamburger span {
+  width:25px;
+  height:3px;
+  background:var(--text);
+  border-radius:2px;
+  transition:.3s;
+}
+
+/* Dark mode toggle */
+.dark-toggle {
+  margin-left:1rem;
+  cursor:pointer;
+  font-size:1.2rem;
+}
 
 /* HERO */
 .hero {
@@ -73,13 +116,31 @@ nav {
   margin-top:2rem;
 }
 
+body.dark .hero {
+  background:linear-gradient(135deg,#1c1c1c,#242424);
+}
+
 .hero h2 { font-size:2.5rem; margin-bottom:1rem; }
 .hero p { max-width:650px; margin:0 auto 2rem; color:var(--muted); }
+
+.hero-cta {
+  display:inline-block;
+  margin-top:1rem;
+  padding:.8rem 1.8rem;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  border-radius:6px;
+  font-weight:600;
+}
+
+.hero-cta:hover { opacity:.9; }
 
 .social-links {
   display:flex;
   justify-content:center;
   gap:1.5rem;
+  margin-top:1.5rem;
 }
 
 .social-links a {
@@ -87,6 +148,9 @@ nav {
   color:var(--accent);
   text-decoration:none;
 }
+
+.social-links a:hover,
+.social-links a:focus-visible { text-decoration:underline; }
 
 /* SECTIONS */
 .section {
@@ -137,15 +201,17 @@ nav {
   display:flex;
   gap:1rem;
   margin-bottom:2rem;
+  flex-wrap:wrap;
 }
 
 .filter-btn {
   padding:.5rem 1.2rem;
   border-radius:20px;
   border:1px solid var(--border);
-  background:#fff;
+  background:var(--card);
   cursor:pointer;
   font-weight:600;
+  color:var(--text);
 }
 
 .filter-btn.active,
@@ -166,45 +232,49 @@ nav {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  background: #fff;
+  background: var(--card);
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity .6s ease, transform .6s ease;
+  transition: opacity .6s ease, transform .6s ease, box-shadow .3s ease;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Fade-in visible */
 .project-card.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Card thumbnail for articles */
+.project-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+  transform: translateY(-4px);
+}
+
+/* Article thumbnail */
 .project-card.article .card-thumb {
   height: 180px;           
   background-size: cover;
   background-position: center;
 }
 
-/* Card overlay */
+/* Overlay */
 .card-overlay {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
   color: #fff;
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
+  inset: 0;
   opacity: 0;
   transition: opacity .3s;
 }
 
-.project-card.article:hover .card-overlay {
+.project-card.article:hover .card-overlay,
+.project-card.article:focus-visible .card-overlay {
   opacity: 1;
 }
 
@@ -242,11 +312,34 @@ nav {
 }
 
 .skill-card {
-  background:#fff;
+  background:var(--card);
   padding:1rem;
   border-radius:10px;
   text-align:center;
   font-weight:600;
+}
+
+/* CONTACT FORM */
+.contact-form {
+  max-width:500px;
+  margin-top:2rem;
+  display:grid;
+  gap:1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding:.7rem;
+  border-radius:6px;
+  border:1px solid var(--border);
+  font-family:inherit;
+  background:var(--card);
+  color:var(--text);
+}
+
+.contact-form textarea {
+  min-height:120px;
+  resize:vertical;
 }
 
 /* CTA */
@@ -258,7 +351,12 @@ nav {
   color:#fff;
   text-decoration:none;
   border-radius:6px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
 }
+
+.cta-btn:hover { opacity:.9; }
 
 /* FOOTER */
 footer {
@@ -268,42 +366,76 @@ footer {
   color:var(--muted);
 }
 
+/* REVEAL ANIMATION */
+.reveal {
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
 @media(max-width:800px){
   .about-flex{flex-direction:column;text-align:center;}
   .about-img{margin-bottom:1rem;}
+  .nav-links{
+    position:absolute;
+    top:100%;
+    right:0;
+    background:var(--bg-main);
+    flex-direction:column;
+    width:200px;
+    padding:1rem;
+    display:none;
+    border:1px solid var(--border);
+  }
+  .nav-links.open { display:flex; }
+  .hamburger { display:flex; }
 }
-
 </style>
 </head>
 <body>
 
 <header>
-  <nav class="container">
+  <nav class="container" aria-label="Main navigation">
     <h1 class="logo">Noah Pagella</h1>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="dark-toggle" id="darkToggle" title="Toggle dark mode">🌙</div>
+      <div class="hamburger" id="hamburger" aria-label="Menu toggle" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </nav>
 </header>
 
-<section id="home" class="hero container">
+<main>
+
+<section id="home" class="hero container reveal">
   <h2>Multimedia Journalist, Writer & Videographer</h2>
-  <p>I tell stories through words, video, and digital media.</p>
+  <p>I tell human-centered stories through words, video, and digital media — with clarity, ethics, and impact.</p>
+  <a href="#projects" class="hero-cta">View My Work</a>
   <div class="social-links">
-    <a href="https://www.linkedin.com/in/noahpagella/" target="_blank">LinkedIn</a>
-    <a href="https://www.instagram.com/npagella4/" target="_blank">Instagram</a>
-    <a href="https://www.youtube.com/@Sifcs" target="_blank">YouTube</a>
+    <a href="https://www.linkedin.com/in/noahpagella/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.instagram.com/npagella4/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.youtube.com/@Sifcs" target="_blank" rel="noopener">YouTube</a>
   </div>
 </section>
 
-<section id="about" class="container section">
+<section id="about" class="container section reveal">
   <h3>About Me</h3>
   <div class="about-flex">
-    <img src="Headshot.jpg" class="about-img">
+    <img src="Headshot.jpg" class="about-img" alt="Portrait of Noah Pagella" loading="lazy">
     <div class="about-text">
       <p>I’m a multimedia journalist with experience in long-form writing, video production, and digital storytelling. My work explores social issues, human stories, and visual narratives across platforms.</p>
       <p>I’ve worked on written features, short documentaries, and social-first video projects, always with an emphasis on clarity, ethics, and impact.</p>
@@ -313,17 +445,23 @@ footer {
         <li>Multimedia Storytelling</li>
         <li>Photography & Visual Media</li>
       </ul>
+      <a href="Noah_Pagella_Resume.pdf" class="cta-btn" download>Download Resume</a>
     </div>
   </div>
 </section>
 
-<section id="projects" class="container section">
+<section id="projects" class="container section reveal">
 <h3>Selected Work</h3>
 
-<div class="projects-grid">
+<div class="filter-buttons">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="article">Articles</button>
+  <button class="filter-btn" data-filter="video">Videos</button>
+</div>
 
-<!-- Medium Article -->
-<a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card article">
+<div class="projects-grid" id="projectsGrid">
+
+<a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" rel="noopener" class="project-card article">
   <div class="card-thumb" style="background-image:url('Pagella_PantryLine2.jpg')"></div>
   <div class="card-overlay">
     <span class="project-tag">Article</span>
@@ -332,8 +470,7 @@ footer {
   </div>
 </a>
 
-<!-- MOCSI Article -->
-<a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" class="project-card article">
+<a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" rel="noopener" class="project-card article">
   <div class="card-thumb" style="background-image:url('MOCSI-Article-Thumb.jpg')"></div>
   <div class="card-overlay">
     <span class="project-tag">Article</span>
@@ -342,20 +479,18 @@ footer {
   </div>
 </a>
 
-<!-- YouTube Video 1 -->
 <div class="project-card video">
-  <iframe src="https://www.youtube.com/embed/FhisHxERv-g" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/FhisHxERv-g" title="Documentary video by Noah Pagella" allowfullscreen loading="lazy"></iframe>
 </div>
 
-<!-- YouTube Video 2 -->
 <div class="project-card video">
-  <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" title="Video project by Noah Pagella" allowfullscreen loading="lazy"></iframe>
 </div>
 
 </div>
 </section>
 
-<section id="skills" class="container section">
+<section id="skills" class="container section reveal">
 <h3>Skills & Expertise</h3>
 <div class="skills-grid">
   <div class="skill-card">Video Editing</div>
@@ -367,35 +502,97 @@ footer {
 </div>
 </section>
 
-<section id="contact" class="container section">
+<section id="contact" class="container section reveal">
   <h3>Contact Me</h3>
-  <p>If you want to collaborate, commission work, or discuss ideas, feel free to reach out.</p>
-  <a href="mailto:npagella4@gmail.com" class="cta-btn">Email Me</a>
+  <p>If you want to collaborate, commission work, or discuss story ideas, feel free to reach out.</p>
+
+  <form class="contact-form" id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" placeholder="Your Message" required></textarea>
+    <button type="submit" class="cta-btn">Send Message</button>
+  </form>
 </section>
+
+</main>
 
 <footer>
   © <span id="year"></span> Noah Pagella
 </footer>
 
 <script>
-// Footer year
+/* Footer year */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// INITIAL FADE-IN for projects
-const projects=document.querySelectorAll(".project-card");
+/* Mobile menu */
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+hamburger.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") navLinks.classList.toggle("open");
+});
+
+/* Dark mode toggle */
+const darkToggle = document.getElementById("darkToggle");
+const body = document.body;
+darkToggle.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  darkToggle.textContent = body.classList.contains("dark") ? "☀️" : "🌙";
+});
+
+/* Reveal on scroll */
+const reveals = document.querySelectorAll(".reveal");
+const revealOnScroll = () => {
+  const trigger = window.innerHeight * 0.85;
+  reveals.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < trigger) section.classList.add("visible");
+  });
+};
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+/* Project fade-in */
+const projects = document.querySelectorAll(".project-card");
 window.addEventListener("load",()=>{
   projects.forEach((p,i)=>{
-    setTimeout(()=>p.classList.add("visible"),i*150);
+    setTimeout(()=>p.classList.add("visible"),i*120);
   });
+});
+
+/* Project filtering */
+const filterButtons = document.querySelectorAll(".filter-btn");
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    const filter = btn.dataset.filter;
+    projects.forEach(card => {
+      if (filter === "all" || card.classList.contains(filter)) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+
+/* Contact form mailto fallback */
+const contactForm = document.getElementById("contactForm");
+contactForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+  const mailtoLink = `mailto:npagella4@gmail.com?subject=Website Contact from ${encodeURIComponent(name)}&body=${encodeURIComponent(message + "\n\nFrom: " + email)}`;
+  window.location.href = mailtoLink;
 });
 </script>
 
 </body>
 </html>
-
-
-
-
 
 
 
