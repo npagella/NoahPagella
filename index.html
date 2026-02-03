@@ -26,7 +26,6 @@
   --card:#ffffff;
 }
 
-/* DARK MODE VARIABLES */
 body.dark {
   --text:#f1f1f1;
   --muted:#bbb;
@@ -49,14 +48,12 @@ body {
   transition: background .3s, color .3s;
 }
 
-/* CONTAINERS */
 .container {
   max-width:1100px;
   margin:auto;
   padding:2rem 1.5rem;
 }
 
-/* SKIP LINK (ACCESSIBILITY) */
 .skip-link {
   position:absolute;
   left:-999px;
@@ -78,7 +75,6 @@ body {
   border-radius:6px;
 }
 
-/* NAV */
 header {
   position:sticky;
   top:0;
@@ -115,12 +111,13 @@ nav {
 .nav-links a:hover,
 .nav-links a:focus-visible { color:var(--accent); }
 
-/* Hamburger */
 .hamburger {
   display:none;
   flex-direction:column;
   gap:4px;
   cursor:pointer;
+  background:none;
+  border:none;
 }
 
 .hamburger span {
@@ -131,14 +128,14 @@ nav {
   transition:.3s;
 }
 
-/* Dark mode toggle */
 .dark-toggle {
   margin-left:1rem;
   cursor:pointer;
   font-size:1.2rem;
+  background:none;
+  border:none;
 }
 
-/* HERO */
 .hero {
   text-align:center;
   padding:6rem 2rem 4rem;
@@ -183,7 +180,6 @@ body.dark .hero {
 .social-links a:hover,
 .social-links a:focus-visible { text-decoration:underline; }
 
-/* SECTIONS */
 .section {
   padding:5rem 1.5rem;
   border-top:1px solid var(--border);
@@ -205,7 +201,6 @@ body.dark .hero {
   margin-bottom:1rem;
 }
 
-/* ABOUT */
 .about-flex {
   display:flex;
   gap:2.5rem;
@@ -227,7 +222,6 @@ body.dark .hero {
   color:var(--muted);
 }
 
-/* FILTER BUTTONS */
 .filter-buttons {
   display:flex;
   gap:1rem;
@@ -251,14 +245,12 @@ body.dark .hero {
   color:#fff;
 }
 
-/* PROJECT GRID */
 .projects-grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:1.75rem;
 }
 
-/* PROJECT CARD */
 .project-card {
   position: relative;
   border-radius: 16px;
@@ -284,14 +276,12 @@ body.dark .hero {
   transform: translateY(-6px);
 }
 
-/* Article thumbnail */
 .project-card.article .card-thumb {
   height: 190px;
   background-size: cover;
   background-position: center;
 }
 
-/* Overlay */
 .card-overlay {
   padding: 1.25rem;
   display: flex;
@@ -313,7 +303,6 @@ body.dark .hero {
 .card-overlay h4 { margin-bottom: .5rem; font-size:1.1rem; }
 .card-overlay p { font-size: .95rem; }
 
-/* Tag */
 .project-tag {
   background: var(--accent);
   color: #fff;
@@ -324,7 +313,6 @@ body.dark .hero {
   margin-bottom: .5rem;
 }
 
-/* Video card */
 .project-card.video {
   height: 240px;
 }
@@ -336,7 +324,6 @@ body.dark .hero {
   border-radius: 16px;
 }
 
-/* SKILLS */
 .skills-grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -351,7 +338,6 @@ body.dark .hero {
   font-weight:600;
 }
 
-/* CONTACT FORM */
 .contact-form {
   max-width:520px;
   margin-top:2rem;
@@ -378,7 +364,6 @@ body.dark .hero {
   resize:vertical;
 }
 
-/* CTA */
 .cta-btn {
   display:inline-block;
   margin-top:1.5rem;
@@ -394,7 +379,6 @@ body.dark .hero {
 
 .cta-btn:hover { opacity:.9; }
 
-/* FOOTER */
 footer {
   text-align:center;
   padding:2.5rem 1.5rem;
@@ -402,7 +386,6 @@ footer {
   color:var(--muted);
 }
 
-/* REVEAL ANIMATION */
 .reveal {
   opacity:0;
   transform:translateY(30px);
@@ -414,7 +397,6 @@ footer {
   transform:translateY(0);
 }
 
-/* MOBILE */
 @media(max-width:850px){
   .about-flex{flex-direction:column;text-align:center;}
   .about-img{margin-bottom:1.25rem;}
@@ -544,7 +526,7 @@ footer {
   <h3>Contact Me</h3>
   <p>If you want to collaborate, commission work, or discuss story ideas, feel free to reach out.</p>
 
-  <form class="contact-form" id="contactForm" novalidate>
+  <form class="contact-form" action="https://formspree.io/f/xgoznjll" method="POST">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name">
 
@@ -565,10 +547,8 @@ footer {
 </footer>
 
 <script>
-/* Footer year */
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* Mobile menu */
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
 hamburger.addEventListener("click", () => {
@@ -578,7 +558,6 @@ hamburger.addEventListener("keypress", (e) => {
   if (e.key === "Enter") navLinks.classList.toggle("open");
 });
 
-/* Dark mode toggle with preference memory */
 const darkToggle = document.getElementById("darkToggle");
 const body = document.body;
 const savedTheme = localStorage.getItem("theme");
@@ -594,7 +573,6 @@ darkToggle.addEventListener("click", () => {
   localStorage.setItem("theme", isDark ? "dark" : "light");
 });
 
-/* Reveal on scroll (IntersectionObserver for performance) */
 const reveals = document.querySelectorAll(".reveal");
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -607,7 +585,6 @@ const observer = new IntersectionObserver(entries => {
 
 reveals.forEach(section => observer.observe(section));
 
-/* Project fade-in */
 const projects = document.querySelectorAll(".project-card");
 window.addEventListener("load",()=>{
   projects.forEach((p,i)=>{
@@ -615,7 +592,6 @@ window.addEventListener("load",()=>{
   });
 });
 
-/* Project filtering */
 const filterButtons = document.querySelectorAll(".filter-btn");
 filterButtons.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -635,21 +611,10 @@ filterButtons.forEach(btn => {
     });
   });
 });
+</script>
 
-/* Contact form mailto fallback with basic validation */
-<form class="contact-form" action="https://formspree.io/f/xgoznjll" method="POST">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" placeholder="Your Name" required>
-
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" placeholder="Your Email" required>
-
-  <label for="message">Message</label>
-  <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-
-  <button type="submit" class="cta-btn">Send Message</button>
-</form>
-
+</body>
+</html>
 
 
 
