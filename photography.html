@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photography — Noah Pagella</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --text:#1a1a1a;
+  --muted:#555;
+  --accent:#1e90ff;
+  --bg:#f5f7fa;
+  --border:#e5e5e5;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:Inter,system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:2rem 1.5rem;
+}
+
+header{
+  border-bottom:1px solid var(--border);
+  background:#fff;
+}
+
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{font-weight:700}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:2rem;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--text);
+}
+
+.nav-links a:hover{color:var(--accent)}
+
+.hero{
+  padding:6rem 2rem 4rem;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:2.8rem;
+  margin-bottom:1rem;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:var(--muted);
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+  margin-top:4rem;
+}
+
+.gallery-item{
+  overflow:hidden;
+  border-radius:14px;
+}
+
+.gallery-item img{
+  width:100%;
+  display:block;
+  transition:.4s;
+}
+
+.gallery-item img:hover{
+  transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo">Noah Pagella</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#work">Reporting</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero container">
+  <h1>Photography</h1>
+  <p>Documentary and community-focused photography centered on human stories.</p>
+</section>
+
+<section class="container">
+  <div class="gallery">
+
+    <div class="gallery-item">
+      <img src="photo1.jpg" alt="Community meeting in Hoboken">
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo2.jpg" alt="Food pantry volunteers organizing donations">
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo3.jpg" alt="Portrait of local resident">
+    </div>
+
+    <div class="gallery-item">
+      <img src="photo4.jpg" alt="High school football game under stadium lights">
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
