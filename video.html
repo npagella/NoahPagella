@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
   <nav class="container">
     <h1 class="logo">Noah Pagella</h1>
@@ -22,28 +21,15 @@
 
 <main class="container">
   <h3>Video Projects</h3>
-
   <div class="projects-grid">
-    <!-- Video 1 -->
-    <div class="project-card video">
-      <iframe src="https://www.youtube.com/embed/FhisHxERv-g" 
-              title="Documentary video by Noah Pagella" 
-              allowfullscreen 
-              loading="lazy"></iframe>
+    <div class="project-card video-card">
+      <iframe src="https://www.youtube.com/embed/FhisHxERv-g" title="Documentary video" allowfullscreen></iframe>
     </div>
-
-    <!-- Video 2 -->
-    <div class="project-card video">
-      <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" 
-              title="Video project by Noah Pagella" 
-              allowfullscreen 
-              loading="lazy"></iframe>
+    <div class="project-card video-card">
+      <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" title="Video project" allowfullscreen></iframe>
     </div>
-    
-    <!-- Add more videos here -->
   </div>
 </main>
-
 <footer>© <span id="year"></span> Noah Pagella</footer>
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
