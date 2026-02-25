@@ -21,26 +21,32 @@
 </header>
 
 <main class="container">
-<h3>Video</h3>
-<div class="projects-grid">
-  <a href="https://www.youtube.com/watch?v=FhisHxERv-g" class="project-card video" target="_blank">
-    <img src="https://img.youtube.com/vi/FhisHxERv-g/hqdefault.jpg" alt="Documentary video">
-    <div class="card-overlay">
-      <span class="project-tag">Video</span>
-      <h4>Documentary on SNAP Cuts</h4>
+  <h3>Video Projects</h3>
+
+  <div class="projects-grid">
+    <!-- Video 1 -->
+    <div class="project-card video">
+      <iframe src="https://www.youtube.com/embed/FhisHxERv-g" 
+              title="Documentary video by Noah Pagella" 
+              allowfullscreen 
+              loading="lazy"></iframe>
     </div>
-  </a>
-  <a href="https://www.youtube.com/watch?v=cvKrCBMaX8E" class="project-card video" target="_blank">
-    <img src="https://img.youtube.com/vi/cvKrCBMaX8E/hqdefault.jpg" alt="Community project video">
-    <div class="card-overlay">
-      <span class="project-tag">Video</span>
-      <h4>Community Project Coverage</h4>
+
+    <!-- Video 2 -->
+    <div class="project-card video">
+      <iframe src="https://www.youtube.com/embed/cvKrCBMaX8E" 
+              title="Video project by Noah Pagella" 
+              allowfullscreen 
+              loading="lazy"></iframe>
     </div>
-  </a>
-</div>
+    
+    <!-- Add more videos here -->
+  </div>
 </main>
 
 <footer>© <span id="year"></span> Noah Pagella</footer>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
