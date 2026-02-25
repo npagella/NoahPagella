@@ -1,43 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- 100% privacy-first analytics -->
+<script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Writing — Noah Pagella</title>
-<link rel="stylesheet" href="style.css">
+<title>Noah Pagella — Writing Portfolio</title>
+<meta name="description" content="Writing portfolio of Noah Pagella, featuring feature articles and investigative stories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --text:#1a1a1a;
+  --muted:#555;
+  --accent:#1e90ff;
+  --bg-main:#f0f2f5;
+  --bg-alt:#f8f9fb;
+  --border:#e0e0e0;
+  --card:#ffffff;
+}
+
+body.dark {
+  --text:#f1f1f1;
+  --muted:#bbb;
+  --accent:#4dabff;
+  --bg-main:#121212;
+  --bg-alt:#1a1a1a;
+  --border:#2a2a2a;
+  --card:#1e1e1e;
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom,var(--bg-main),var(--bg-alt));
+  color:var(--text);
+  line-height:1.7;
+  transition: background .3s, color .3s;
+}
+
+.container { max-width:1100px; margin:auto; padding:2rem 1.5rem; }
+
+header {
+  position:sticky; top:0; background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--border); z-index:1000; transition: background .3s;
+}
+body.dark header { background:rgba(18,18,18,.95); }
+
+nav { display:flex; justify-content:space-between; align-items:center; }
+.logo { font-size:1.6rem; font-weight:700; }
+
+.nav-links { list-style:none; display:flex; gap:2rem; }
+.nav-links a { text-decoration:none; color:var(--text); font-weight:500; }
+.nav-links a:hover, .nav-links a:focus-visible { color:var(--accent); }
+
+.hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; background:none; border:none; }
+.hamburger span { width:25px; height:3px; background:var(--text); border-radius:2px; transition:.3s; }
+
+.dark-toggle { margin-left:1rem; cursor:pointer; font-size:1.2rem; background:none; border:none; }
+
+.hero {
+  text-align:left; padding:6rem 2rem 4rem; background:var(--bg-alt);
+  border-bottom:2px solid var(--accent);
+}
+.hero h2 { font-size:3rem; margin-bottom:1rem; font-weight:700; line-height:1.2; }
+.hero p { font-size:1.1rem; color:var(--muted); max-width:700px; }
+
+.article-grid {
+  display:grid;
+  gap:2rem;
+  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  margin-top:3rem;
+}
+
+.article-card img {
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  border-radius:16px;
+  display:block;
+}
+
+.article-card h4 {
+  margin-top:0.75rem;
+  font-size:1.1rem;
+  font-weight:600;
+}
+
+.article-card p { font-size:0.95rem; color:var(--muted); }
+
+footer { text-align:center; padding:2.5rem 1.5rem; border-top:1px solid var(--border); color:var(--muted); }
+
+@media(max-width:850px){
+  .nav-links{
+    position:absolute; top:100%; right:0; background:var(--bg-main);
+    flex-direction:column; width:220px; padding:1.25rem; display:none;
+    border:1px solid var(--border); border-radius:12px;
+  }
+  .nav-links.open { display:flex; }
+  .hamburger { display:flex; }
+}
+</style>
 </head>
 <body>
+
 <header>
   <nav class="container">
     <h1 class="logo">Noah Pagella</h1>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="photography.html">Photography</a></li>
       <li><a href="video.html">Video</a></li>
       <li><a href="writing.html">Writing</a></li>
     </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <button class="dark-toggle" id="darkToggle">🌙</button>
   </nav>
 </header>
 
 <main class="container">
-  <h3>Articles</h3>
-  <div class="projects-grid">
-    <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" class="project-card article">
-      <div class="card-thumb" style="background-image:url('Pagella_PantryLine2.jpg'); height:250px;"></div>
-      <div class="card-overlay"><span class="project-tag">Article</span><h4>SNAP Cuts Lead To Increased Need</h4></div>
-    </a>
-    <a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" class="project-card article">
-      <div class="card-thumb" style="background-image:url('MOCSI-Article-Thumb.jpg'); height:250px;"></div>
-      <div class="card-overlay"><span class="project-tag">Article</span><h4>President Dr. Rose Presents to MOCSI</h4></div>
-    </a>
-  </div>
+  <section class="hero">
+    <h2>Writing Portfolio</h2>
+    <p>Feature articles and investigative stories highlighting social issues, community events, and human experiences.</p>
+  </section>
+
+  <section class="article-grid">
+    <div class="article-card">
+      <a href="https://medium.com/@pagellan1/snap-cuts-lead-to-increased-need-cd79f9a8a3fa" target="_blank" rel="noopener">
+        <img src="Pagella_PantryLine2.jpg" alt="SNAP cuts article thumbnail">
+        <h4>SNAP Cuts Lead To Increased Need</h4>
+        <p>Exploring how federal SNAP benefit cuts are straining food banks in New Jersey.</p>
+      </a>
+    </div>
+    <div class="article-card">
+      <a href="https://www.visionsnewspaper.com/post/president-dr-rose-presents-to-mocsi-by-noah-pagella" target="_blank" rel="noopener">
+        <img src="MOCSI-Article-Thumb.jpg" alt="MOCSI event article thumbnail">
+        <h4>President Dr. Rose Presents to MOCSI</h4>
+        <p>A multimedia story covering MOCSI events and community impact.</p>
+      </a>
+    </div>
+  </section>
 </main>
-<footer>© <span id="year"></span> Noah Pagella</footer>
+
+<footer>
+  © <span id="year"></span> Noah Pagella
+</footer>
+
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
+
+const darkToggle = document.getElementById("darkToggle");
+const body = document.body;
+if(localStorage.getItem("theme")==="dark"){ body.classList.add("dark"); darkToggle.textContent="☀️"; }
+darkToggle.addEventListener("click", ()=>{
+  body.classList.toggle("dark");
+  darkToggle.textContent = body.classList.contains("dark")?"☀️":"🌙";
+  localStorage.setItem("theme", body.classList.contains("dark")?"dark":"light");
+});
 </script>
-</body>
-</html>
 
 </body>
 </html>
