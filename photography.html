@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
   <nav class="container">
     <h1 class="logo">Noah Pagella</h1>
@@ -23,30 +22,20 @@
 <main class="container">
   <h3>Photography</h3>
   <div class="projects-grid">
-    <a href="Skate.jpg" class="project-card photo" target="_blank">
-      <img src="Skate.jpg" alt="Skate photo">
-      <div class="card-overlay">
-        <span class="project-tag">Photography</span>
-        <h4>Skate</h4>
-      </div>
+    <a href="Skate.jpg" class="project-card article" target="_blank">
+      <div class="card-thumb" style="background-image:url('Skate.jpg'); height:400px;"></div>
+      <div class="card-overlay"><span class="project-tag">Photography</span><h4>Skate</h4></div>
     </a>
-    <a href="Lbus.jpg" class="project-card photo" target="_blank">
-      <img src="Lbus.jpg" alt="Lbus photo">
-      <div class="card-overlay">
-        <span class="project-tag">Photography</span>
-        <h4>Lbus</h4>
-      </div>
+    <a href="Lbus.jpg" class="project-card article" target="_blank">
+      <div class="card-thumb" style="background-image:url('Lbus.jpg'); height:400px;"></div>
+      <div class="card-overlay"><span class="project-tag">Photography</span><h4>Lbus</h4></div>
     </a>
-    <a href="volunteer.jpg" class="project-card photo" target="_blank">
-      <img src="volunteer.jpg" alt="Volunteer photo">
-      <div class="card-overlay">
-        <span class="project-tag">Photography</span>
-        <h4>Volunteer</h4>
-      </div>
+    <a href="volunteer.jpg" class="project-card article" target="_blank">
+      <div class="card-thumb" style="background-image:url('volunteer.jpg'); height:400px;"></div>
+      <div class="card-overlay"><span class="project-tag">Photography</span><h4>Volunteer</h4></div>
     </a>
   </div>
 </main>
-
 <footer>© <span id="year"></span> Noah Pagella</footer>
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
