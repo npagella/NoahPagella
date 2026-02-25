@@ -3,64 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noah Pagella — Photography</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--text:#1a1a1a;--accent:#1e90ff;--bg-main:#f0f2f5;--bg-alt:#f8f9fb;--border:#e0e0e0;--card:#fff;}
-body.dark{--text:#f1f1f1;--accent:#4dabff;--bg-main:#121212;--bg-alt:#1a1a1a;--border:#2a2a2a;--card:#1e1e1e;}
-body{font-family:Inter,sans-serif;background:var(--bg-main);color:var(--text);margin:0;padding:0;}
-header{position:sticky;top:0;background:var(--bg-main);border-bottom:1px solid var(--border);z-index:1000;}
-nav{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:auto;padding:1rem;}
-.nav-links{list-style:none;display:flex;gap:2rem;}
-.nav-links a{text-decoration:none;color:var(--text);font-weight:500;}
-.nav-links a:hover{text-decoration:underline;color:var(--accent);}
-.hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;}
-.hamburger span{width:25px;height:3px;background:var(--text);border-radius:2px;}
-.dark-toggle{cursor:pointer;font-size:1.2rem;}
-.container{max-width:1100px;margin:auto;padding:2rem 1.5rem;}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
-.project-card img{width:100%;border-radius:12px;}
-@media(max-width:850px){.nav-links{position:absolute;top:100%;right:0;background:var(--bg-main);flex-direction:column;width:220px;padding:1rem;display:none;border:1px solid var(--border);border-radius:12px;}.nav-links.open{display:flex;}.hamburger{display:flex;}}
-</style>
+<title>Photography — Noah Pagella</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <nav>
+  <nav class="container">
     <h1 class="logo">Noah Pagella</h1>
-    <div style="display:flex;gap:1rem;align-items:center;">
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="photography.html">Photography</a></li>
-        <li><a href="video.html">Video</a></li>
-        <li><a href="writing.html">Writing</a></li>
-      </ul>
-      <button class="dark-toggle" id="darkToggle">🌙</button>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="photography.html">Photography</a></li>
+      <li><a href="video.html">Video</a></li>
+      <li><a href="writing.html">Writing</a></li>
+    </ul>
   </nav>
 </header>
 
 <main class="container">
-<h2>Photography Portfolio</h2>
+<h3>Photography</h3>
 <div class="projects-grid">
-  <div class="project-card"><img src="Lbus.jpg" alt=""></div>
-  <div class="project-card"><img src="Skate.jpg" alt=""></div>
-  <div class="project-card"><img src="volunteer.jpg" alt=""></div>
-  <!-- Add more images here -->
+  <a href="photos/Lbus.jpg" class="project-card photo">
+    <img src="photos/Lbus.jpg-thumb.jpg" alt="Photo 1">
+    <div class="card-overlay">
+      <span class="project-tag">Photography</span>
+      <h4>Photo Title 1</h4>
+    </div>
+  </a>
+  <a href="photos/Skate.jpg" class="project-card photo">
+    <img src="photos/Skate.jpg-thumb.jpg" alt="Photo 2">
+    <div class="card-overlay">
+      <span class="project-tag">Photography</span>
+      <h4>Photo Title 2</h4>
+    </div>
+  </a>
+  
+  <a href="photos/volunteer.jpg" class="project-card photo">
+    <img src="photos/volunteer-thumb.jpg" alt="Photo 3">
+    <div class="card-overlay">
+      <span class="project-tag">Photography</span>
+      <h4>Photo Title 2</h4>
+    </div>
+  </a>
+  <!-- Add more photos here -->
 </div>
 </main>
 
 <footer>© <span id="year"></span> Noah Pagella</footer>
-
-<script>
-document.getElementById("year").textContent=new Date().getFullYear();
-const hamburger=document.getElementById("hamburger");const navLinks=document.getElementById("navLinks");
-hamburger.addEventListener("click",()=>navLinks.classList.toggle("open"));
-const darkToggle=document.getElementById("darkToggle");const body=document.body;
-if(localStorage.getItem("theme")==="dark"){body.classList.add("dark");darkToggle.textContent="☀️";}
-darkToggle.addEventListener("click",()=>{body.classList.toggle("dark");darkToggle.textContent=body.classList.contains("dark")?"☀️":"🌙";localStorage.setItem("theme",body.classList.contains("dark")?"dark":"light");});
-</script>
-
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
