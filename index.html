@@ -91,7 +91,7 @@ body.dark header {
   background:rgba(18,18,18,.95);
 }
 
-nav {
+ {
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -99,19 +99,19 @@ nav {
 
 .logo { font-size:1.6rem; font-weight:700; }
 
-.nav-links {
+.-links {
   list-style:none;
   display:flex;
   gap:2rem;
 }
 
-.nav-links a {
+.-links a {
   text-decoration:none;
   color:var(--text);
   font-weight:500;
 }
 
-.nav-links a:hover,
+.-links a:hover,
 .nav-links a:focus-visible { color:var(--accent); }
 
 .hamburger {
@@ -429,11 +429,14 @@ footer {
     <h1 class="logo">Noah Pagella</h1>
     <div style="display:flex;align-items:center;gap:1rem;">
       <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul class="nav-links" id="navLinks">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#projects">Projects</a></li>
+  <li><a href="photography.html">Photography</a></li>
+  <li><a href="#skills">Skills</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
       </ul>
       <button class="dark-toggle" id="darkToggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌙</button>
       <button class="hamburger" id="hamburger" aria-label="Menu toggle">
@@ -618,6 +621,7 @@ filterButtons.forEach(btn => {
 
 </body>
 </html>
+
 
 
 
